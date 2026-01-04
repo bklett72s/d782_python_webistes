@@ -12,11 +12,6 @@ from flask import Flask, redirect, request
 
 application = Flask(__name__)
 
-@application.before_request
-def force_https():
-    if request.headers.get("X-Forwarded-Proto") == "http":
-        return redirect(request.url.replace("http://", "https://"), code=301)
-
 @application.route('/')
 def index():
     return "<h1>Page is created to satisfy Task 2: Network Security</h1>"
